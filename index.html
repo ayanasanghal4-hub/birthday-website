@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For You ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #160000;
+            color: white;
+            font-family: Georgia, serif;
+            overflow-x: hidden;
+        }
+
+        /* FLOATING HEARTS */
+
+        .heart {
+            position: fixed;
+            bottom: -30px;
+            color: #ff3030;
+            font-size: 20px;
+            animation: floatUp 7s linear infinite;
+            opacity: 0.7;
+            z-index: 0;
+        }
+
+        @keyframes floatUp {
+
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+
+        }
+
+        /* OPENING */
+
+        .opening {
+            height: 100vh;
+            min-height: 600px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            padding: 30px;
+
+            background:
+                radial-gradient(circle at center,
+                #700000 0%,
+                #300000 45%,
+                #160000 100%);
+
+            position: relative;
+        }
+
+        .opening-content {
+            max-width: 700px;
+            animation: fadeIn 2s ease;
+            z-index: 2;
+        }
+
+        .small {
+            font-family: Arial, sans-serif;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 13px;
+            color: #ff9a9a;
+            margin-bottom: 30px;
+        }
+
+        .opening h1 {
+            font-size: clamp(42px, 8vw, 80px);
+            line-height: 1.15;
+            font-weight: normal;
+        }
+
+        .opening h1 span {
+            color: #ff3030;
+        }
+
+        .opening p {
+            margin-top: 30px;
+            font-size: 21px;
+            line-height: 1.8;
+            color: #ffd6d6;
+        }
+
+        .scroll {
+            margin-top: 55px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #ff8a8a;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+
+        }
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* MAIN */
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: auto;
+            padding: 100px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title h2 {
+            font-size: 45px;
+            font-weight: normal;
+            color: #ff4040;
+        }
+
+        .section-title p {
+            margin-top: 15px;
+            color: #d9aaaa;
+            font-family: Arial, sans-serif;
+        }
+
+        /* PHOTO CARDS */
+
+        .memory {
+            margin-bottom: 100px;
+            text-align: center;
+        }
+
+        .memory img {
+            width: 100%;
+            max-width: 650px;
+            max-height: 700px;
+            object-fit: cover;
+
+            border-radius: 18px;
+
+            border: 2px solid #8f1717;
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.6);
+
+            display: block;
+            margin: auto;
+        }
+
+        .memory-text {
+            max-width: 650px;
+            margin: 30px auto 0;
+            text-align: left;
+            padding: 0 10px;
+        }
+
+        .memory-text h3 {
+            font-size: 28px;
+            color: #ff5252;
+            margin-bottom: 15px;
+        }
+
+        .memory-text p {
+            font-family: Arial, sans-serif;
+            font-size: 17px;
+            line-height: 1.8;
+            color: #f2dede;
+        }
+
+        /* LETTER */
+
+        .letter {
+            background: #260707;
+            border: 1px solid #711414;
+            border-radius: 20px;
+
+            padding: 45px;
+
+            max-width: 750px;
+            margin: 120px auto;
+
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .letter h2 {
+            color: #ff4040;
+            font-size: 38px;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+
+        .letter p {
+            font-family: Arial, sans-serif;
+            color: #f5dddd;
+            font-size: 17px;
+            line-height: 2;
+            margin-bottom: 20px;
+        }
+
+        /* FINAL */
+
+        .final {
+            min-height: 80vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 60px 25px;
+
+            background:
+                radial-gradient(circle at center,
+                #760000,
+                #250000 60%,
+                #160000);
+        }
+
+        .final h2 {
+            font-size: clamp(45px, 8vw, 75px);
+            font-weight: normal;
+        }
+
+        .final h2 span {
+            color: #ff3333;
+        }
+
+        .final p {
+            margin-top: 30px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            color: #ffd0d0;
+            line-height: 1.8;
+        }
+
+        .big-heart {
+            font-size: 70px;
+            margin-top: 40px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .opening {
+                min-height: 100vh;
+            }
+
+            .opening p {
+                font-size: 18px;
+            }
+
+            .container {
+                padding: 70px 0;
+            }
+
+            .section-title h2 {
+                font-size: 35px;
+            }
+
+            .memory {
+                margin-bottom: 75px;
+            }
+
+            .memory-text h3 {
+                font-size: 24px;
+            }
+
+            .memory-text p,
+            .letter p {
+                font-size: 16px;
+            }
+
+            .letter {
+                padding: 30px 22px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- FLOATING HEARTS -->
+
+<div class="heart" style="left:10%; animation-delay:0s;">♥</div>
+<div class="heart" style="left:25%; animation-delay:2s;">♥</div>
+<div class="heart" style="left:45%; animation-delay:4s;">♥</div>
+<div class="heart" style="left:65%; animation-delay:1s;">♥</div>
+<div class="heart" style="left:85%; animation-delay:3s;">♥</div>
+
+
+<!-- OPENING -->
+
+<section class="opening">
+
+    <div class="opening-content">
+
+        <div class="small">
+            something i made for you
+        </div>
+
+        <h1>
+            i made this<br>
+            <span>for you ❤️</span>
+        </h1>
+
+        <p>
+            i hope you like it<br>
+            i love you
+        </p>
+
+        <div class="scroll">
+            ↓ &nbsp; SCROLL DOWN &nbsp; ↓
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- MEMORIES -->
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>Our Memories ❤️</h2>
+
+        <p>
+            just a few of the many moments i love
+        </p>
+
+    </div>
+
+
+    <!-- PHOTO 1 -->
+
+    <div class="memory">
+
+        <img src="photos/photo1.jpg">
+
+        <div class="memory-text">
+
+            <h3>Memory One</h3>
+
+            <p>
+               ICONE POSEE GURLYYYY
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PHOTO 2 -->
+
+    <div class="memory">
+
+        <img src="photos/photo2.jpg">
+
+        <div class="memory-text">
+
+            <h3>Memory Two</h3>
+
+            <p>
+                OUR FIRST HANGOUT
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PHOTO 3 -->
+
+    <div class="memory">
+
+        <img src="photos/photo3.jpg">
+
+        <div class="memory-text">
+
+            <h3>Memory Three</h3>
+
+            <p>
+                MY COKE TO YOUR MONSTER ALWAYS.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PHOTO 4 -->
+
+    <div class="memory">
+
+        <img src="photos/photo4.jpg">
+
+        <div class="memory-text">
+
+            <h3>Memory Four</h3>
+
+            <p>
+                THIS IS SUCH A CUTE PIC BRVHH.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PHOTO 5 -->
+
+    <div class="memory">
+
+        <img src="photos/photo5.jpg">
+
+        <div class="memory-text">
+
+            <h3>Memory Five</h3>
+
+            <p>
+                WE WERE ON CALL FOR HOURS CHOOSING THE FITS.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PHOTO 6 -->
+
+    <div class="memory">
+
+        <img src="photos/photo6.jpg">
+
+        <div class="memory-text">
+
+            <h3>Memory Six</h3>
+
+            <p>
+                WE RAN OUT OF THE THEATER.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PHOTO 7 -->
+
+    <div class="memory">
+
+        <img src="photos/photo7.jpg">
+
+        <div class="memory-text">
+
+            <h3>Memory Seven</h3>
+
+            <p>
+                MATCHING BY ACCIDENT.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PHOTO 8 -->
+
+    <div class="memory">
+
+        <img src="photos/photo8.jpg">
+
+        <div class="memory-text">
+
+            <h3>Memory Eight</h3>
+
+            <p>
+                WE MEET YOUR DAD AT KFC.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PHOTO 9 -->
+
+    <div class="memory">
+
+        <img src="photos/photo9.jpg">
+
+        <div class="memory-text">
+
+            <h3>Memory Nine</h3>
+
+            <p>
+                LAST MIN PLAN.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PHOTO 10 -->
+
+    <div class="memory">
+
+        <img src="photos/photo10.jpg">
+
+        <div class="memory-text">
+
+            <h3>Memory Ten</h3>
+
+            <p>
+                MY FAV PC OF US.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- LONG LETTER -->
+
+    <div class="letter">
+
+        <h2>A little letter for you ❤️</h2>
+
+        <p>
+            Dear bestie,
+        </p>
+
+        <p>
+           I am not good at writing letters so i will try my best but yeah. well i guess this is why we learn how to write letters in english class so i can write to people like you well back to the topic. YOUR BIRTHDAY TODAYYY OMG HAPPY BIRTHDAY. If you are seeing this you have alredy seen the magazine! I hope you liked it the pics took forever to find and plac but i would do it all over again if it makes you happy. okay not i sound like a obbsessed boyfriend wait lets meet in the next para
+        </p>
+
+        <p>
+            Okayy back, so i was saying that that is not your only gift and there is more i hope you like all of it and we keep talking till the ebd of time you will always come before anyone as u made me simle when i was crying, i call you when i cry u might not even know but by the end of the call i forget why i was crying and only remember the call and random yap.
+        </p>
+
+        <p>
+            Once again, Happy Birthday ❤️
+        </p>
+
+        <p>
+            I love you always.
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- FINAL SCREEN -->
+
+<section class="final">
+
+    <div>
+
+        <h2>
+            Happy Birthday<br>
+            <span>Beautiful ❤️</span>
+        </h2>
+
+        <p>
+            Thank you for being you.<br>
+           and for always being there for me
+        </p>
+
+        <div class="big-heart">
+            ❤️
+        </div>
+
+    </div>
+
+</section>
+
+
+</body>
+</html>
